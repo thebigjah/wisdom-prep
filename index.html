@@ -324,6 +324,58 @@ let state = {
 
 const app = document.getElementById("app");
 
+// Profile persistence — saves reusable mentor profiles so you don't re-type next time
+const PROFILES_KEY = "wisdom.profiles.v1";
+function loadProfiles() {
+  try { return JSON.parse(localStorage.getItem(PROFILES_KEY) || "[]"); } catch { return []; }
+}
+function saveProfiles(p) { localStorage.setItem(PROFILES_KEY, JSON.stringify(p)); }
+function saveCurrentAsProfile() {
+  if (!state.mentorName.trim()) { alert("Add a mentor name first."); return; }
+  const profiles = loadProfiles();
+  const existing = profiles.findIndex(p => p.name.toLowerCase() === state.mentorName.toLowerCase());
+  const profile = {
+    name: state.mentorName,
+    role: state.mentorRole,
+    yearsAhead: state.yearsAhead,
+    lastUsed: Date.now(),
+  };
+  if (existing >= 0) profiles[existing] = profile;
+  else profiles.push(profile);
+  saveProfiles(profiles);
+  showToast(`Saved profile: ${profile.name}`);
+}
+function loadProfile(name) {
+  const p = loadProfiles().find(p => p.name === name);
+  if (!p) return;
+  state.mentorName = p.name;
+  state.mentorRole = p.role;
+  state.yearsAhead = p.yearsAhead;
+  p.lastUsed = Date.now();
+  const all = loadProfiles().filter(x => x.name !== name).concat([p]);
+  saveProfiles(all);
+  render();
+}
+function deleteProfile(name) {
+  if (!confirm(`Delete profile for ${name}?`)) return;
+  saveProfiles(loadProfiles().filter(p => p.name !== name));
+  render();
+}
+
+function showToast(msg) {
+  let t = document.getElementById('wp-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'wp-toast';
+    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:var(--accent);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:200;opacity:0;transition:opacity 200ms;';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(window.__wpToastTimer);
+  window.__wpToastTimer = setTimeout(() => { t.style.opacity = '0'; }, 1500);
+}
+
 function render() {
   if (state.step === 1) renderStep1();
   else if (state.step === 2) renderStep2();
@@ -331,9 +383,24 @@ function render() {
 }
 
 function renderStep1() {
+  const profiles = loadProfiles().sort((a, b) => (b.lastUsed || 0) - (a.lastUsed || 0));
+  const profilesHtml = profiles.length === 0 ? '' : `
+    <div style="background:var(--bg-alt);border-radius:8px;padding:14px 16px;margin-bottom:18px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--accent-light);text-transform:uppercase;margin-bottom:8px;">Saved mentors</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${profiles.map(p => `
+          <div style="display:inline-flex;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:4px 4px 4px 12px;font-size:13px;">
+            <button onclick="loadProfile('${p.name.replace(/'/g, "\\'")}')" style="background:none;border:none;cursor:pointer;color:var(--accent);font-family:inherit;padding:2px 4px;">${p.name}</button>
+            <button onclick="deleteProfile('${p.name.replace(/'/g, "\\'")}')" style="background:none;border:none;cursor:pointer;color:var(--accent-light);font-size:14px;padding:2px 8px;line-height:1;" title="Delete profile">×</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
   app.innerHTML = `
     <div class="card">
       <h2>1. Who are you talking to?</h2>
+      ${profilesHtml}
       <label>Mentor name</label>
       <input id="mentorName" type="text" placeholder="e.g. Pastor Matt" value="${state.mentorName}" />
 
@@ -354,7 +421,10 @@ function renderStep1() {
       <p class="hint">This is the question YOU bring. The 5 generated questions are scaffolding around it.</p>
       <textarea id="specificQuestion" placeholder="e.g. I have a close friend getting married in 10 weeks and I'm worried about it. How do I help without overstepping?">${state.specificQuestion}</textarea>
 
-      <button class="btn-primary" onclick="goStep2()">Next →</button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <button class="btn-primary" onclick="goStep2()">Next →</button>
+        <button onclick="state.mentorName=document.getElementById('mentorName').value.trim();state.mentorRole=document.getElementById('mentorRole').value.trim();state.yearsAhead=document.getElementById('yearsAhead').value;saveCurrentAsProfile();" style="background:transparent;color:var(--accent);border:1px solid var(--border);padding:10px 18px;border-radius:6px;font-family:inherit;font-size:13px;cursor:pointer;">Save mentor profile</button>
+      </div>
     </div>
   `;
 }
