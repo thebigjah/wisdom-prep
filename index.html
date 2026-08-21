@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wisdom Conversation Prep | Elijah Purcell</title>
 <meta name="description" content="Five-minute prep for a conversation with someone wiser than you: questions, notes, reflection. By Elijah Purcell, Purcell Ventures LLC.">
-<meta property="og:title" content="Wisdom Conversation Prep — 5-min mentor-call generator">
+<meta property="og:title" content="Wisdom Conversation Prep, 5-min mentor-call generator">
 <meta property="og:description" content="Five-minute prep for a conversation with someone wiser than you: questions, notes, reflection. By Elijah Purcell, Purcell Ventures LLC.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thebigjah.github.io/wisdom-prep/">
@@ -20,7 +20,7 @@
     Theme: a Manila-folder briefing document. Light grey-blue
     paper, navy ink, single rust accent for the 'ask' and key
     questions. Fraunces variable-font for headings, Atkinson
-    Hyperlegible body (designed for clarity — fits the
+    Hyperlegible body (designed for clarity, fits the
     'careful conversation prep' use-case). Folio-numbered
     sections like an intelligence-briefing format.
     ============================================================ */
@@ -122,7 +122,7 @@
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
   }
   .card::after {
-    /* folio number — drawn via attr */
+    /* folio number, drawn via attr */
     content:"F-01";
     position: absolute; top: 6px; right: 8px;
     font-family: var(--mono); font-weight: 700;
@@ -323,26 +323,26 @@
   <div id="app"></div>
 
   <p class="meta">Built by <a href="https://purcellventures.co">Elijah Purcell</a> · Companion to the <a href="../calvinism-test/index.html">Calvinism TULIP test</a> · No data leaves your browser
-    <span class="credit-line">— PURCELLVENTURES.CO —</span></p>
+    <span class="credit-line">, PURCELLVENTURES.CO,</span></p>
 </div>
 
 <script>
-// Question library — generated per (domain × mentor type) combination.
+// Question library, generated per (domain × mentor type) combination.
 // Each domain has 12-15 questions; the tool picks 5-7 calibrated to mentor.
 
 const QUESTIONS = {
   marriage: [
     "What's the thing you wish you'd known before getting married?",
-    "Looking back at the first 5 years of marriage — what was the hardest, and what got you through it?",
+    "Looking back at the first 5 years of marriage, what was the hardest, and what got you through it?",
     "What's a marriage rule you live by that other couples don't know about?",
     "How did you and your spouse align on money in the first 5 years?",
-    "What's something you used to fight about that you now don't — what changed?",
-    "Looking at couples you've watched marry — what early signs of trouble do people miss?",
+    "What's something you used to fight about that you now don't, what changed?",
+    "Looking at couples you've watched marry, what early signs of trouble do people miss?",
     "What does 'submission' actually look like in real Tuesday-morning life, not theory?",
     "When did you realize your spouse wasn't perfect, and how did you metabolize it?",
     "What's a non-obvious yellow flag in dating that turns out to matter?",
     "What did your parents' marriage teach you, intentionally or unintentionally?",
-    "Have you ever told a friend 'I don't think you should marry this person' — what happened?",
+    "Have you ever told a friend 'I don't think you should marry this person', what happened?",
     "What did you NOT learn from premarital counseling that you wish you had?",
     "How do you handle a season where you're not feeling close to your spouse?",
     "What's the most important habit in marriage that nobody talks about?",
@@ -365,7 +365,7 @@ const QUESTIONS = {
     "When have you been most sure of your faith, and when has it been most fragile?",
     "Who shaped your theology that I should be reading?",
     "What's a spiritual practice you've kept for 10+ years that's still alive?",
-    "What's a part of your tradition you've rejected — and what replaced it?",
+    "What's a part of your tradition you've rejected, and what replaced it?",
     "How do you read scripture daily without it becoming a checkbox?",
     "When you've been wrong about God, how did you find out?",
     "What's a prayer that's been answered slowly?",
@@ -373,14 +373,14 @@ const QUESTIONS = {
     "What's something you used to believe theologically that you've changed on?",
     "What's a heresy you find tempting that the church handles badly?",
     "How do you talk to your kids about hard things in the Bible?",
-    "What's your stance on Calvinism / Arminianism / Molinism — and how did you land there?",
+    "What's your stance on Calvinism / Arminianism / Molinism, and how did you land there?",
   ],
   money: [
     "What's the financial decision in your 20s that you most regret?",
     "What's a financial habit you wish you'd started at 21?",
-    "How did you and your spouse align on money — or do you still not?",
-    "When did you start saving for retirement — too late, too early, about right?",
-    "What's your relationship with debt — what would you tell your younger self?",
+    "How did you and your spouse align on money, or do you still not?",
+    "When did you start saving for retirement, too late, too early, about right?",
+    "What's your relationship with debt, what would you tell your younger self?",
     "How do you decide when to spend money on convenience vs. doing it yourself?",
     "What's the most you've ever lost on a financial decision, and what did you learn?",
     "How do you think about generosity vs. saving in your current season?",
@@ -395,13 +395,13 @@ const QUESTIONS = {
     "When did you stop trying to control their decisions and start trusting them?",
     "What's a discipline approach that worked for one kid and not another?",
     "How do you talk to your kids about your own failures?",
-    "What's the hardest age, in your experience — and why?",
+    "What's the hardest age, in your experience, and why?",
     "What's something you said as a parent that you regret?",
     "What would you tell yourself in your first year of parenting?",
   ],
   friendship: [
     "How did you keep your closest friendships across decades?",
-    "Who's a friend you let go of — was that the right call?",
+    "Who's a friend you let go of, was that the right call?",
     "What's the role of church community in your friendships now vs. 20 years ago?",
     "How do you handle a friendship where one of you grew and the other didn't?",
     "What's the most important habit for staying close to people who move away?",
@@ -411,11 +411,11 @@ const QUESTIONS = {
   mental_health: [
     "When did you first see a therapist, and what triggered it?",
     "What's something you used to think was a personality trait that turned out to be a wound?",
-    "How do you handle anxiety / depression / the hard stuff — what's worked?",
+    "How do you handle anxiety / depression / the hard stuff, what's worked?",
     "What's a part of yourself you've made peace with that you used to fight?",
     "What's something a counselor or pastor told you that changed the way you saw yourself?",
     "How do you know when you need help vs. when you can push through?",
-    "What's your relationship with rest and sabbath — has it changed?",
+    "What's your relationship with rest and sabbath, has it changed?",
   ],
   failure: [
     "Tell me about the hardest year of your life. What did you learn?",
@@ -424,12 +424,12 @@ const QUESTIONS = {
     "What's something that felt like the end of the world at 25 that you barely remember now?",
     "What's the most expensive lesson you've ever learned?",
     "How do you decide when to push through resistance vs. take it as a signal?",
-    "What's a time you thought God was silent — and what was actually happening?",
+    "What's a time you thought God was silent, and what was actually happening?",
   ],
   vocation: [
     "When did you know what you were supposed to do with your life?",
     "How did you discern between things you WANT and things you're CALLED to?",
-    "What's a path you considered and didn't take — do you ever wonder about it?",
+    "What's a path you considered and didn't take, do you ever wonder about it?",
     "Have you had a 'pivot' season? What did it look like?",
     "How do you handle seasons when the work feels meaningless?",
     "What's the relationship between your gifts and your obedience?",
@@ -438,7 +438,7 @@ const QUESTIONS = {
     "What's a time-management discipline you've kept for years?",
     "What's a meeting / commitment / standing thing you cut that gave you life back?",
     "How do you decide what to say no to?",
-    "What's the gap between what you SAY your priorities are and what your CALENDAR says — and how do you close it?",
+    "What's the gap between what you SAY your priorities are and what your CALENDAR says, and how do you close it?",
     "What's a daily rhythm that compounds for you?",
     "How do you handle a season when you're over-committed and can't see a way out?",
   ],
@@ -469,7 +469,7 @@ let state = {
 
 const app = document.getElementById("app");
 
-// Profile persistence — saves reusable mentor profiles so you don't re-type next time
+// Profile persistence, saves reusable mentor profiles so you don't re-type next time
 const PROFILES_KEY = "wisdom.profiles.v1";
 function loadProfiles() {
   try { return JSON.parse(localStorage.getItem(PROFILES_KEY) || "[]"); } catch { return []; }
@@ -555,7 +555,7 @@ function renderStep1() {
 
       <label>Years they're ahead of you</label>
       <select id="yearsAhead">
-        <option value="">— pick —</option>
+        <option value="">, pick,</option>
         <option ${state.yearsAhead === '5-10' ? 'selected' : ''} value="5-10">5-10 years</option>
         <option ${state.yearsAhead === '10-20' ? 'selected' : ''} value="10-20">10-20 years</option>
         <option ${state.yearsAhead === '20-30' ? 'selected' : ''} value="20-30">20-30 years</option>
@@ -591,7 +591,7 @@ function renderStep2() {
       <div class="domain-grid" id="domainGrid"></div>
 
       <label>Any context I should know? (optional)</label>
-      <p class="hint">Stuff like "they don't know I'm asking for someone else" or "we've never had a deep conversation before" — affects the framing.</p>
+      <p class="hint">Stuff like "they don't know I'm asking for someone else" or "we've never had a deep conversation before", affects the framing.</p>
       <textarea id="contextNote" placeholder="optional">${state.contextNote}</textarea>
 
       <button class="btn-primary" onclick="goOutput()">Generate conversation prep →</button>
@@ -642,13 +642,13 @@ function renderOutput() {
   const questions = generateQuestions();
   const m = state.mentorName || "your mentor";
 
-  const opener = `Hey ${m} — I have a specific thing I've been wrestling with and I'd love your read on it. Got 30 min sometime this week?`;
+  const opener = `Hey ${m}, I have a specific thing I've been wrestling with and I'd love your read on it. Got 30 min sometime this week?`;
 
-  const introOnSite = `Thanks for making the time. I've been thinking about [${state.specificQuestion || 'the question I brought you'}]. You've lived something like this — and I'd rather ask you and listen than figure it out myself by trial and error. I have a few questions I came with, but I mostly want to follow what you have to say.`;
+  const introOnSite = `Thanks for making the time. I've been thinking about [${state.specificQuestion || 'the question I brought you'}]. You've lived something like this, and I'd rather ask you and listen than figure it out myself by trial and error. I have a few questions I came with, but I mostly want to follow what you have to say.`;
 
-  const closingMove = `Before I go — what's the question I should have asked you but didn't?`;
+  const closingMove = `Before I go, what's the question I should have asked you but didn't?`;
 
-  const postCallSummary = `## ${new Date().toISOString().slice(0,10)} — ${state.mentorName || '(name)'} — ${(state.domain || 'multi').split(',').join(', ')}
+  const postCallSummary = `## ${new Date().toISOString().slice(0,10)}, ${state.mentorName || '(name)'}, ${(state.domain || 'multi').split(',').join(', ')}
 
 **Question I brought:** ${state.specificQuestion || '(fill in)'}
 
@@ -694,7 +694,7 @@ function renderOutput() {
       </div>
 
       <div class="output-section">
-        <div class="output-label">📝 Post-call reflection template — paste into wisdom-log.md</div>
+        <div class="output-label">📝 Post-call reflection template, paste into wisdom-log.md</div>
         <div class="copyable" id="postCall">${postCallSummary}</div>
         <button class="copy-btn" onclick="copyText('postCall')">Copy</button>
       </div>
